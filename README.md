@@ -8,13 +8,13 @@ EndFirst LLC has registered the [OID 1.3.6.1.4.1.47049](http://oid-info.com/get/
 - **1.3.6.1.4.1.47049.1.1.x**: LDAP attributes
 - **1.3.6.1.4.1.47049.1.2.x**: LDAP object classes 
 
-### UserHash Field
+### userHash Field
 
-endfirst UserHash is used to maintain referential integrity between LDAP,
+endfirst userHash is used to maintain referential integrity between LDAP,
 Postgres and Redis databases. It is a surrogate key for the Postgres UserId
 
 - **OID**: 1.3.6.1.4.1.47049.1.1.1
-- **AttributeType**: UserHash
+- **AttributeType**: userHash
 
 ### EndFirst objectClass
 
@@ -23,7 +23,7 @@ Postgres and Redis databases. It is a surrogate key for the Postgres UserId
 
 ## Usage
 
-A user can be extended with the auxillary `objectClass: endfirst` and the attribute `UserHash` will then be required in order to enable referencing across databases.
+A user can be extended with the auxillary `objectClass: endfirst` and the attribute `userHash` will then be required in order to enable referencing across databases.
 
 ## Installation
 
@@ -39,11 +39,11 @@ And verify that the schema is correctly loaded:
     dn: cn={5}endfirst,cn=schema,cn=config
     objectClass: olcSchemaConfig
     cn: {5}endfirst
-    olcAttributeTypes: {0}( 1.3.6.1.4.1.47049.1.1.1 NAME 'UserHash' DESC 'EndFirst
+    olcAttributeTypes: {0}( 1.3.6.1.4.1.47049.1.1.1 NAME 'userHash' DESC 'EndFirst
      User Hash' EQUALITY caseExactMatch SINGLE-VALUE 
      SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
     olcObjectClasses: {0}( 1.3.6.1.4.1.47049.1.2.1 NAME 'endfirst' DESC 'endfirst
-      LDAP Schema' AUXILIARY MUST ( UserHash ) )
+      LDAP Schema' AUXILIARY MUST ( userHash ) )
 
 If your LDAP server does not use OLC (cn=config), then add the schema `endfirst.schema` in the schema directory, and update your configuration accordingly.
 
@@ -56,5 +56,5 @@ If your LDAP server does not use OLC (cn=config), then add the schema `endfirst.
     objectClass: endfirst
     dn: uid=bogus@endfirst.com,ou=Users,dc=endfirstlocal
     uid: bogus@endfirst.com
-    UserHash: VAflWnGDt4VIg_0jNpQV7Z0PIEi79vNPcbpAZUO-6AM=
+    userHash: VAflWnGDt4VIg_0jNpQV7Z0PIEi79vNPcbpAZUO-6AM=
 
