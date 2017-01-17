@@ -4,14 +4,14 @@
 
 EndFirst LLC has registered the [OID 1.3.6.1.4.1.47049](http://oid-info.com/get/1.3.6.1.4.1.47049) with IANA for its LDAP schema. We have defined our schema in accordance with the recommendations found in the [OpenLDAP Admin guide](http://www.openldap.org/doc/admin24/schema.html)
 
-- **1.3.6.1.4.1.47949.1**: LDAP objects
-- **1.3.6.1.4.1.47949.1.1.x**: LDAP attributes
-- **1.3.6.1.4.1.47949.1.2.x**: LDAP object classes 
+- **1.3.6.1.4.1.47049.1**: LDAP objects
+- **1.3.6.1.4.1.47049.1.1.x**: LDAP attributes
+- **1.3.6.1.4.1.47049.1.2.x**: LDAP object classes 
 
 ### UserHash Field
 
-ownCloud can read an LDAP attribute and set the user quota according to its value. 
-The attribute shall return human readable values, e.g. "2 GB".
+endfirst UserHash is used to maintain referential integrity between LDAP,
+Postgres and Redis databases. It is a surrogate key for the Postgres UserId
 
 - **OID**: 1.3.6.1.4.1.47049.1.1.1
 - **AttributeType**: UserHash
@@ -27,7 +27,7 @@ A user can be extended with the auxillary `objectClass: endfirst` and the attrib
 
 ## Installation
 
-To install the schema in a OpenLDAP using OLC (cn=config), use the `ldapadd` command:
+To install the schema in OpenLDAP using OLC (cn=config), use the `ldapadd` command:
 
     root# ldapadd -Y EXTERNAL -H ldapi:/// -f endfirst.ldif
    
