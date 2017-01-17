@@ -1,0 +1,34 @@
+#
+# SCHEMA 'endfirst' for OpenLDAP OLC (cn=config)
+#
+# UserHash Field:
+# endfirst UserHash is used to maintain referential integrity between LDAP,
+# Postgres and Redis databases. It is a surrogate key for the Postgres UserId
+#
+# SOURCE:
+# https://github.com/robarchibald/endfirstLdapSchema
+#
+# IANA PEN 1.3.6.1.4.1.47049 is registered to EndFirst
+# See: http://www.iana.org/assignments/enterprise-numbers/enterprise-numbers
+#
+#          1.3.6.1.4.1.47049.1   - LDAP
+#          1.3.6.1.4.1.47049.1.1 - LDAP Attribute Types
+#          1.3.6.1.4.1.47049.1.2 - LDAP Object Classes
+# See http://www.openldap.org/doc/admin24/schema.html for naming info
+#
+# WARNING: the spaces ' ' in the definitions are very important!!!
+#
+
+attributetype ( 1.3.6.1.4.1.47049.1.1.1
+    NAME 'UserHash'
+    DESC 'EndFirst User Hash'
+    EQUALITY caseExactMatch
+    SYNTAX '1.3.6.1.4.1.1466.115.121.1.15'
+    SINGLE-VALUE )
+
+objectclass ( 1.3.6.1.4.1.47049.1.2.1
+    NAME 'endfirst'
+    DESC 'endfirst LDAP Schema'
+    AUXILIARY
+    MUST ( UserHash ) )
+
