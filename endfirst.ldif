@@ -22,49 +22,49 @@ dn: cn=endfirst,cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: endfirst
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.1
- NAME 'fileQuota'
- DESC 'File Sharing Quota (e.g. 2 GB)'
- EQUALITY caseIgnoreIA5Match
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{50}
- SINGLE-VALUE )
+  NAME 'fileQuota'
+  DESC 'File Sharing Quota (e.g. 2 GB)'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{50}
+  SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.2
- NAME 'mailQuota'
- DESC 'Mail Quota (e.g. 2 GB)'
- EQUALITY caseIgnoreIA5Match
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{50}
- SINGLE-VALUE )
+  NAME 'mailQuota'
+  DESC 'Mail Quota (e.g. 2 GB)'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{50}
+  SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.3
- NAME 'proxy'
- DESC 'Mail Proxy setting'
- EQUALITY caseIgnoreIA5Match
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{100}
- SINGLE-VALUE )
+  NAME 'proxy'
+  DESC 'Mail Proxy setting'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{100}
+  SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.4
- NAME 'mailFolder'
- DESC 'The absolute path to the mail directory'
- EQUALITY caseExactIA5Match
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255}
- SINGLE-VALUE )
+  NAME 'mailFolder'
+  DESC 'The absolute path to the mail directory'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255}
+  SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.5
- NAME 'nologin'
- DESC 'Flag to lockout a user from logging in'
- EQUALITY booleanMatch
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
- SINGLE-VALUE )
+  NAME 'nologin'
+  DESC 'Flag to lockout a user from logging in'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.6
- NAME 'dbUserId'
- DESC 'Database User ID to maintain referential integrity'
- EQUALITY integerMatch
- SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
- SINGLE-VALUE )
+  NAME 'dbUserId'
+  DESC 'Database User ID to maintain referential integrity'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE )
 olcObjectClasses: ( 1.3.6.1.4.1.47049.1.2.1
- NAME 'endfirstUser'
- DESC 'endfirst user account'
- SUP top STRUCTURAL
- MUST ( uid $ dbUserId $ cn $ userPassword ) )
+  NAME 'endfirstUser'
+  DESC 'endfirst user account'
+  SUP top STRUCTURAL
+  MUST ( uid $ dbUserId $ cn $ userPassword ) )
 olcObjectClasses: ( 1.3.6.1.4.1.47049.1.2.2
- NAME 'endfirstSubscriber'
- DESC 'endfirst LDAP Schema'
- SUP endfirstUser AUXILIARY
- MUST ( fileQuota $ mailQuota )
- MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $ nologin ) )
+  NAME 'endfirstSubscriber'
+  DESC 'endfirst LDAP Schema'
+  SUP endfirstUser AUXILIARY
+  MUST ( fileQuota $ mailQuota )
+  MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $ nologin ) )
