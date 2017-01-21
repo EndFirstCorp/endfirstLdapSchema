@@ -1,8 +1,9 @@
 #
-# SCHEMA 'endfirst' for OpenLDAP OLC (cn=config)
+# SCHEMA 'endfirst' for OpenLDAP
 #
 # INSTALLATION:
-# sudo ldapadd -Y EXTERNAL -H ldapi:/// -f endfirst.ldif
+# For use only with non-online configuration LDAP directories. Use 
+# the .ldif file if using online configuration
 #
 # SOURCE:
 # https://github.com/robarchibald/endfirstLdapSchema
@@ -46,13 +47,6 @@ attributeType ( 1.3.6.1.4.1.47049.1.1.4
     SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255}
     SINGLE-VALUE )
 
-attributeType ( 1.3.6.1.4.1.47049.1.1.5
-    NAME 'nologin'
-    DESC 'Flag to lockout a user from logging in'
-    EQUALITY booleanMatch
-    SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
-    SINGLE-VALUE )
-
 attributeType ( 1.3.6.1.4.1.47049.1.1.6
     NAME 'dbUserId'
     DESC 'Database User ID to maintain referential integrity'
@@ -61,15 +55,15 @@ attributeType ( 1.3.6.1.4.1.47049.1.1.6
     SINGLE-VALUE )
 
 objectClass ( 1.3.6.1.4.1.47049.1.2.1
-    NAME 'endfirstUser'
+    NAME 'endfirstAccount'
     DESC 'endfirst user account'
-    SUP top STRUCTURAL
+    STRUCTURAL
     MUST ( uid $ dbUserId $ cn $ userPassword ) )
- 
+
 objectClass ( 1.3.6.1.4.1.47049.1.2.2
     NAME 'endfirstSubscriber'
     DESC 'endfirst LDAP Schema'
-    SUP endfirstUser AUXILIARY
+    AUXILIARY
     MUST ( fileQuota $ mailQuota )
-    MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $ nologin ) )
-
+    MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $
+    pwdHistory $ pwdFailureTime $ pwdAccountLockedTime ) )
