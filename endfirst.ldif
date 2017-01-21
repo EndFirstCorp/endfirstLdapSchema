@@ -60,11 +60,11 @@ olcAttributeTypes: ( 1.3.6.1.4.1.47049.1.1.6
 olcObjectClasses: ( 1.3.6.1.4.1.47049.1.2.1
   NAME 'endfirstUser'
   DESC 'endfirst user account'
-  SUP top STRUCTURAL
+  STRUCTURAL
   MUST ( uid $ dbUserId $ cn $ userPassword ) )
 olcObjectClasses: ( 1.3.6.1.4.1.47049.1.2.2
   NAME 'endfirstSubscriber'
   DESC 'endfirst LDAP Schema'
-  SUP endfirstUser AUXILIARY
+  AUXILIARY
   MUST ( fileQuota $ mailQuota )
   MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $ nologin ) )
