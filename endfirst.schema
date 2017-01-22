@@ -37,7 +37,7 @@ attributeType ( 1.3.6.1.4.1.47049.1.1.3
     NAME 'proxy'
     DESC 'Mail Proxy setting'
     EQUALITY caseIgnoreIA5Match
-    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{100}
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{50}
     SINGLE-VALUE )
 
 attributeType ( 1.3.6.1.4.1.47049.1.1.4
