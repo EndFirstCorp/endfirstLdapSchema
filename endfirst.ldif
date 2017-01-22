@@ -61,5 +61,4 @@ olcObjectClasses: ( 1.3.6.1.4.1.47049.1.2.2
   DESC 'endfirst LDAP Schema'
   AUXILIARY
   MUST ( fileQuota $ mailQuota )
-  MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber $ 
-  pwdHistory $ pwdFailureTime $ pwdAccountLockedTime ) )
+  MAY ( host $ proxy $ mailFolder $ gidNumber $ uidNumber ) )

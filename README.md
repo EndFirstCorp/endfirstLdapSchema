@@ -1,6 +1,6 @@
 # LDAP Schema for EndFirst
 
-This is the LDAP schema used by EndFirst to provide LDAP authentication and directory services to our suite of applications. In order to ensure interoperability with other objectClasses such as inetOrgPerson, account, etc., we have not defined attributes that exist in other standard schemas. The upside, of course, is interoperability. The downside is that the endfirst schema is dependent upon attributes found in cosine and ppolicy schemas, and will not work without these being installed first.
+This is the LDAP schema used by EndFirst to provide LDAP authentication and directory services to our suite of applications. In order to ensure interoperability with other objectClasses such as inetOrgPerson, account, etc., we have not defined attributes that exist in other standard schemas. The upside, of course, is interoperability. The downside is that the endfirst schema is dependent upon attributes found in the standard cosine schema, and will not work without this being installed first.
 
 ## IANA Private Enterprise Number
 
@@ -60,11 +60,11 @@ This objectClass grants users login access, but grants no access to endfirst ser
 
 Adds additional fields for users who are subscribed to the email, calendar and file-sharing service
 
-NOTE: endFirstSubscriber relies on the standard cosine and ppolicy schemas that ship with OpenLDAP. In order to use the endfirstSubscriber objectClass, these schemas must be installed first.
+NOTE: endFirstSubscriber relies on the standard cosine schema that ships with OpenLDAP. In order to use the endfirstSubscriber objectClass, this schema must be installed first.
 
 - **OID**: 1.3.6.1.4.1.47049.1.2.2
 - **MAY**: fileQuota, mailQuota
-- **MUST**: host, proxy, mailFolder, gidNumber, uidNumber, nologin, pwdHistory,  pwdFailureTime, pwdAccountLockedTime
+- **MUST**: host, proxy, mailFolder, gidNumber, uidNumber
 
 ## Usage
 
@@ -74,7 +74,7 @@ Subscribers are also given the endfirstSubscriber objectClass. These additional 
 
 ## Installation
 
-**NOTE:** The endfirst schema relies on the standard cosine and ppolicy schemas that ship with OpenLDAP. In order to use the endfirstSubscriber objectClass, these schemas must be installed first.
+**NOTE:** The endfirst schema relies on the standard cosine schema that ships with OpenLDAP. In order to use the endfirstSubscriber objectClass, this schema must be installed first.
 
 To install the schema in OpenLDAP using OLC (cn=config), use the `ldapadd` command:
 
